@@ -1,11 +1,13 @@
 
-export interface Pokemon {
-    pokemon: string | number
-}
+export type Pokemon = string | number
+
 
 export const getPokemon = async (pokemon: Pokemon) => {
+    console.log( await `https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-    return await response.json();
+    const data = await response.json();
+    console.log( await data);
+    return data;
 }
 
 export const getPokeDataByUrl = async (url: string) => {
