@@ -128,3 +128,17 @@
     @apply font-sans;
   }
 }
+.white-box {
+    background-color: #FAFAFAE6;
+    border: 1px solid currentColor;
+}
+.iconBtn {
+    min-width: 48px;
+    max-height: 48px;
+}
+@media screen and (max-width: 640px){
+    .iconBtn{
+        min-width: 40px;
+        max-height: 40px;
+    }
+}
