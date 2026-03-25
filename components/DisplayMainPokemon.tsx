@@ -6,7 +6,7 @@ const DisplayMainPokemon = () => {
 
 
     return (
-        <div className="bg-[#FAFAFA]/95 border border-current p-3 justify-center min-w-50 sm:min-w-100">
+        <div className="bg-[#FAFAFA]/95 border border-current p-3 justify-center min-w-50 sm:w-110">
             <div className="flex">
                 <h1 className="pe-4 text-[40px]">Eevee</h1>
                 {/* <img className="fill-yellow-300" src="/assets/star-icon.svg" alt="Toggle Favorite Pokemon" /> */}
@@ -23,8 +23,8 @@ const DisplayMainPokemon = () => {
 
             <div className="flex gap-2.5 w-full h-auto">
                 {/* Here we will map out our evolution images Here! */}
-                <img src="/assets/normalType.png" alt="First pokemon's typing" />
-                <img src="/assets/normalType.png" alt="Second typing"></img>
+                <img className='w-44 h-full' src="/assets/normalType.png" alt="First pokemon's typing" />
+                <img className='w-44 h-full' src="/assets/normalType.png" alt="Second typing"></img>
             </div>
         </div>
     )

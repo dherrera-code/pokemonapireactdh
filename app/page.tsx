@@ -12,14 +12,14 @@ export default function Home() {
       <TopHeaderComponent></TopHeaderComponent>
       <section className="flex justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(400px,460px)] gap-9 mb-8 place-items-center">
-          <DisplayMainPokemon></DisplayMainPokemon>
-
-          <DisplayEvolutions></DisplayEvolutions>
+          {/* Searched Pokemon */}
+          <DisplayMainPokemon />
+          {/* Evolution List */}
+          <DisplayEvolutions />
           {/* Base Stats and Abilities */}
-          <DisplayBaseAbility></DisplayBaseAbility>
-          <DisplayMovesLocation></DisplayMovesLocation>
-
-
+          <DisplayBaseAbility />
+          {/* All Moves and Location */}
+          <DisplayMovesLocation />
         </div>
       </section>
     </div>
