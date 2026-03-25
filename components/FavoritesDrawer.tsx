@@ -10,9 +10,9 @@ const FavoritesDrawer = () => {
                 <DrawerTrigger>
                     {/* <img className='h-[60px] cursor-pointer mx-5 sm:mx-10  ' src="/assets/menu-icon.svg" alt="Toggle Favorites menu" /> */}
                     <svg className='cursor-pointer mx-5 sm:mx-10' width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 12H21" stroke="#FFFFFF" strokeWidth="3" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 6H21" stroke="#FFFFFF" strokeWidth="3" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 18H21" stroke="#FFFFFF" strokeWidth="3" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 12H21" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M3 6H21" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M3 18H21" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
 
                 </DrawerTrigger>

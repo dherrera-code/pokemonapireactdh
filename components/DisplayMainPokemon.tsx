@@ -1,8 +1,13 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 
 const DisplayMainPokemon = () => {
+
+    // Create function to toggle pokemon to local storage (Key: "Favorite")
+    
+    // const [isFav, setIsFav] = useState(localStorage.getItem("Favorite"))
+
 
 
     return (
