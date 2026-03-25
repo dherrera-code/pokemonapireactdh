@@ -1,8 +1,12 @@
+"use client"
+
 import React from 'react'
 
 const DisplayMainPokemon = () => {
+
+
     return (
-        <div className="bg-[#FAFAFA]/95 border border-current p-3 justify-center sm:min-w-120">
+        <div className="bg-[#FAFAFA]/95 border border-current p-3 justify-center min-w-50 sm:min-w-100">
             <div className="flex">
                 <h1 className="pe-4 text-[40px]">Eevee</h1>
                 {/* <img className="fill-yellow-300" src="/assets/star-icon.svg" alt="Toggle Favorite Pokemon" /> */}
