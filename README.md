@@ -17,5 +17,7 @@ Implement Search functionality! (DONE)
 Display favorites inside drawer!
 Implement the Random Pokemon function! (DONE)!
 
-## Peer Review():
+## Peer Review(): Lucas Guptill
+website functions really well, clean ui design and all systems come together for a functioning pokedex.
+code is clean and simple, Amazing work!
 
