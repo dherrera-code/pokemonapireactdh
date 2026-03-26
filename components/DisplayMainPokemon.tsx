@@ -88,7 +88,7 @@ const DisplayMainPokemon = () => {
     }
 
     useEffect(() => {
-        getPokemonDetail(133) // On load, we will load in our main pokemon!
+        getPokemonDetail(1) // On load, we will load in our main pokemon!
 
     } , [] )
 

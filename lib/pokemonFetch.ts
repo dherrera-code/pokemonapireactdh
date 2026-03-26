@@ -1,6 +1,4 @@
-
 export type Pokemon = string | number
-
 
 export const getPokemon = async (pokemon: Pokemon) => {
     console.log( await `https://pokeapi.co/api/v2/pokemon/${pokemon}`)
