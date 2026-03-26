@@ -4,4 +4,9 @@
 
 ## This webpage uses an External API to get and display data of a specific pokemon and uses localstorage to save a user's favorite pokemon!
 
-## NOTES: Using Shadcn/ui for my drawer component!
+## NOTES: 
+
+Finish implementing displaying evolutions, (DONE)
+Implement Search functionality!
+Display favorites inside drawer!
+Implement the Random Pokemon function!

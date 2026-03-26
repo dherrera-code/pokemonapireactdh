@@ -22,34 +22,49 @@ const DisplayEvolutions = () => {
         console.log(evolUrl)
         const evolData = await getPokeDataByUrl(evolUrl);
         console.log(evolData)
-
         const firstEvolData = await getPokemon(evolData.chain.species.name);
 
         setFirstEvolList({
             name: evolData.chain.species.name,
             src: firstEvolData.sprites.other["official-artwork"].front_default
         });
-        console.log(evolData.chain.evolves_to.length > 0);
+        
         (evolData.chain.evolves_to.length > 0) ? setBoolSecondEvol(true) : setBoolSecondEvol(false);
 
-        //     for (let i = 0; i < evolData.chain.evolves_to.length; i++) {
-        //     const pkmonDiv = document.createElement("div");
-        //     const secondEvolImg = document.createElement("img")
-        //     secondEvolImg.style = "width: 100px; height: 100px"
-        //     secondEvolImg.className = "mx-auto"
-        //     secondEvolImg.alt = evolData.chain.evolves_to[i].species.name
+        // Logic for displaying second evol!
+        let evolutionArr: EvolutionData[] = [];
 
-        //     let newEvolData = await getPokemon(evolData.chain.evolves_to[i].species.name)
+        for (let i = 0; i < evolData.chain.evolves_to.length; i++) {
+            const secondEvolData = await getPokemon(evolData.chain.evolves_to[i].species.name);
 
-        //     secondEvolImg.src = newEvolData.sprites.other["official-artwork"].front_default;
-        //     const secondEvolName = document.createElement('p');
-        //     secondEvolName.className = "text-center"
-        //     secondEvolName.textContent = evolData.chain.evolves_to[i].species.name;
-        //     pkmonDiv.appendChild(secondEvolImg);
-        //     pkmonDiv.appendChild(secondEvolName);
-        //     displaySecondEvol.appendChild(pkmonDiv);
-        // }
+            let pkmon: EvolutionData = {
+                name: evolData.chain.evolves_to[i].species.name,
+                src: secondEvolData.sprites.other["official-artwork"].front_default
+            };
+            evolutionArr.push(pkmon) //insert pokemon object here       
+        }
+        console.log(evolutionArr)
+        setSecondEvolList(evolutionArr);
 
+        // Third evolution if exist!
+        // (evolData.chain.evolves_to[0].evolves_to.length > 0) ? setBoolThirdEvol(true) : setBoolThirdEvol(false)
+        if (evolData.chain.evolves_to[0].evolves_to.length > 0) setBoolThirdEvol(true)
+        else {
+            setBoolThirdEvol(false);
+            return;
+        }
+
+        let thirdEvolArray: EvolutionData[] = [];
+        for (let i = 0; i < evolData.chain.evolves_to[0].evolves_to.length; i++) {
+            const thirdEvolData = await getPokemon(evolData.chain.evolves_to[0].evolves_to[i].species.name);
+
+            let pkmon: EvolutionData = {
+                name: evolData.chain.evolves_to[0].evolves_to[i].species.name,
+                src: thirdEvolData.sprites.other["official-artwork"].front_default
+            };
+            thirdEvolArray.push(pkmon) //insert pokemon object here       
+        }
+        setThirdEvolList(thirdEvolArray)
     }
     useEffect(() => {
         displayEvolutionLine();
@@ -65,20 +80,24 @@ const DisplayEvolutions = () => {
             </div>
             {/* Second Evol here */}
             <img className={boolSecondEvol ? "mx-auto" : "hidden"} src="/assets/DownArrow.svg" alt="Next evolution" />
-            
-            
+            <div className='flex flex-wrap justify-evenly'>
+                {secondEvolList?.map((pokemon, index) => (
+                    <div key={index}>
+                        <img className='w-25 h-25' src={pokemon.src} alt={pokemon.name} />
+                        <p className='text-center'>{pokemon.name}</p>
+                    </div>
+                ))}
+            </div>
+            {/* Third evolution line here */}
             <img className={boolThirdEvol ? "mx-auto" : "hidden"} src="/assets/DownArrow.svg" alt="Next evolution" />
-
-            {/* <div className="flex flex-wrap justify-evenly"></div> */}
-            {/* <div>
-                <img className="h-25 mx-auto" src="assets/133Eevee.png" alt="" />
-                <p className="text-center">Eevee</p>
-            </div> */}
-            {/* <div>
-                <img className="h-25 mx-auto" src="assets/133Eevee.png" alt="" />
-                <p className="text-center">Eevee</p>
-            </div> */}
-
+            <div className='flex flex-wrap justify-evenly'>
+                {thirdEvolList?.map((pokemon, index) => (
+                    <div key={index}>
+                        <img className='w-25 h-25' src={pokemon.src} alt={pokemon.name} />
+                        <p className='text-center'>{pokemon.name}</p>
+                    </div>
+                ))}
+            </div>
         </section>
     )
 }
