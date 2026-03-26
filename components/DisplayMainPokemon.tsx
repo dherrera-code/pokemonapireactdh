@@ -77,18 +77,21 @@ const DisplayMainPokemon = () => {
             if(pokemon === favoriteList[i]){
                 // if pokemon is in favorites list, 
                 await removePokemonFromLocalStorage(currentPokemon)
+                setFavoritePokemonList(getFromLocalStorage())
                 setIsCurrentFavorite(false);
                 return;
             }
         }
         // lets add to favorites and change bool to true
         await savePokemonToLocalStorage(currentPokemon)
+                setFavoritePokemonList(getFromLocalStorage())
         setIsCurrentFavorite(true);
     }
 
     useEffect(() => {
         getPokemonDetail(pokemon) // On load, we will load in our main pokemon!
         setFavoritePokemonList(getFromLocalStorage())
+        
     } , [pokemon] )
 
     return (
