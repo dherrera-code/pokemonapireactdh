@@ -14,7 +14,6 @@ const DisplayMainPokemon = () => {
 
     // Create function to toggle pokemon to local storage (Key: "Favorite")
 
-    // const [isFav, setIsFav] = useState(localStorage.getItem("Favorite"))
     const [currentPokemon, setCurrentPokemon] = useState("")
     const [pokemonImage, setPokemonImage] = useState<string | undefined>(undefined);
     const [pokemonShiny, setPokemonShiny] = useState<string | undefined>(undefined)
@@ -88,9 +87,9 @@ const DisplayMainPokemon = () => {
     }
 
     useEffect(() => {
-        getPokemonDetail(1) // On load, we will load in our main pokemon!
+        getPokemonDetail(pokemon) // On load, we will load in our main pokemon!
 
-    } , [] )
+    } , [pokemon] )
 
     return (
         <div className="bg-[#FAFAFA]/95 border border-current p-3 justify-center min-w-50 sm:w-110">
@@ -112,7 +111,8 @@ const DisplayMainPokemon = () => {
             {/* Display pokemon's element typings */}
             <div className="flex gap-2.5 w-full h-auto">
                 <img className='w-44 h-full' src={firstType?.src} alt={secondType?.alt} />
-                <img className='w-44 h-full' src={secondType?.src} alt={secondType?.alt}></img>
+                {isHaveSecondType ? (<img className='w-44 h-full' src={secondType?.src} alt={secondType?.alt}></img>) : ""}
+                
             </div>
         </div>
     )

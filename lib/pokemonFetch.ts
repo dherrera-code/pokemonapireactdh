@@ -1,8 +1,10 @@
 export type Pokemon = string | number
 
 export const getPokemon = async (pokemon: Pokemon) => {
-    console.log( await `https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    console.log( `https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, {
+        cache: "force-cache"
+    });
     const data = await response.json();
     console.log( await data);
     return data;

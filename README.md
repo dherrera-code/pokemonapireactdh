@@ -7,6 +7,6 @@
 ## NOTES: 
 
 Finish implementing displaying evolutions, (DONE)
-Implement Search functionality!
+Implement Search functionality! (DONE)
 Display favorites inside drawer!
 Implement the Random Pokemon function!

@@ -59,7 +59,7 @@ const DisplayBaseAbility = () => {
 
   useEffect(() => {
     displayBaseAbilityStat()
-  }, [])
+  }, [pokemon])
 
   return (
     <div className="lg:col-start-2 lg-row-start-1">
@@ -87,7 +87,7 @@ const DisplayBaseAbility = () => {
                 </div>
                 <h3 className="mt-18" >Total Stats: {baseTotal}</h3>
               </div>
-              <div className="bg-[#FAFAFA]/95 border border-current p-3.5 max-w-75">
+              <div className="bg-[#FAFAFA]/95 border border-current p-3.5 max-w-75 sm:w-75">
                 <h2 className="pb-3 text-2xl">Abilities</h2>
                 <p id="abilities">{abilities}</p>
               </div>
