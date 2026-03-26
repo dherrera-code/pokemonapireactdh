@@ -1,6 +1,6 @@
 "use client"
 
-import { usePokemon } from '@/context/context'
+import { useFavoriteList, usePokemon } from '@/context/context'
 import { getFromLocalStorage, removePokemonFromLocalStorage, savePokemonToLocalStorage } from '@/lib/localStorageFav'
 import { getPokeDataByUrl, getPokemon, Pokemon } from '@/lib/pokemonFetch'
 import React, { useEffect, useRef, useState } from 'react'
@@ -28,6 +28,7 @@ const DisplayMainPokemon = () => {
     const [secondType, setSecondType] = useState<ImageData | null>(null)
 
     const { pokemon, setPokemon } = usePokemon();
+    const {favoritePokemonList ,setFavoritePokemonList} = useFavoriteList();
 
     const getPokemonDetail = async (name: Pokemon) => {
         const data = await getPokemon(name);
@@ -53,6 +54,7 @@ const DisplayMainPokemon = () => {
     
     const handleCry = () => {
         // console.log(audioRef.current)
+        console.log(favoritePokemonList)
         audioRef.current?.play()
     }
     const checkIsFav = async (pokemonCurrent: string) => {
@@ -70,25 +72,23 @@ const DisplayMainPokemon = () => {
     const handleFavoriteToggle = async () => {
         console.log("HandleFav function is envoked!")
         const favoriteList = await getFromLocalStorage();
-        console.log(favoriteList);
+
         for(let i = 0; i < favoriteList.length; i++){
             if(pokemon === favoriteList[i]){
                 // if pokemon is in favorites list, 
                 await removePokemonFromLocalStorage(currentPokemon)
                 setIsCurrentFavorite(false);
-                // 
                 return;
             }
         }
         // lets add to favorites and change bool to true
         await savePokemonToLocalStorage(currentPokemon)
         setIsCurrentFavorite(true);
-
     }
 
     useEffect(() => {
         getPokemonDetail(pokemon) // On load, we will load in our main pokemon!
-
+        setFavoritePokemonList(getFromLocalStorage())
     } , [pokemon] )
 
     return (

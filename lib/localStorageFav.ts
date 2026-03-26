@@ -1,5 +1,5 @@
 
-export const getFromLocalStorage = async () => {
+export const getFromLocalStorage = () => {
     let pokemonNames = localStorage.getItem("FavoritesList")
 
     if(pokemonNames === null) return [];
@@ -17,7 +17,7 @@ export const savePokemonToLocalStorage = async (pokemonName: string) => {
 
 export const removePokemonFromLocalStorage = async (pokemonName: string) => {
     let pokemonList = await getFromLocalStorage();
-    let pokemonNameIndex = pokemonList.indexof(pokemonName);
+    let pokemonNameIndex = pokemonList.indexOf(pokemonName);
 
     pokemonList.splice(pokemonNameIndex, 1);
     localStorage.setItem("FavoritesList", JSON.stringify(pokemonList));

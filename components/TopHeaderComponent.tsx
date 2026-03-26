@@ -12,7 +12,6 @@ const TopHeaderComponent = () => {
 const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
   if (e.key === "Enter") {
     e.preventDefault();
-    console.log(pokemonInput)
     handleSubmit();
   }
 }
@@ -22,12 +21,18 @@ const handleSubmit = async () => {
     const newData = await getPokemon(pokemonInput)
     console.log(newData);
     setPokemon(pokemonInput)
-    
+    setPokemonInput("")
   }
   catch{
     setPokemonInput("")
     alert("Input Invalid");
   }
+}
+
+const handleRandom = async () => {
+  const randomNumber = Math.floor(Math.random() * 1025)
+  const newData = await getPokemon(randomNumber);
+  setPokemon(newData.name)
 }
 
   return (
@@ -36,8 +41,8 @@ const handleSubmit = async () => {
         <FavoritesDrawer key={"left"}></FavoritesDrawer>
         <Input value={pokemonInput} onKeyDown={(event) => handleKeyDown(event)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPokemonInput(e.target.value)} type='text' placeholder="Enter a Pokemon or Pokedex number!" className="bg-white min-w-[50%] sm:max-w-[70%] p-4 h-[55px] " required /> 
         <div className="flex flex-row me-5">
-          <img className="cursor-pointer w-8 sm:w-10 ms-1" src="/assets/shuffle-icon.svg" alt="Shuffle Pokemon" />
-          <img className="cursor-pointer w-8 sm:w-10 ms-5 me-5" src="/assets/search-icon.svg" alt="Search Icon" />
+          <img onClick={handleRandom} className="cursor-pointer w-8 sm:w-10 ms-1" src="/assets/shuffle-icon.svg" alt="Shuffle Pokemon" />
+          <img onClick={handleSubmit} className="cursor-pointer w-8 sm:w-10 ms-5 me-5" src="/assets/search-icon.svg" alt="Search Icon" />
         </div>
       </header>
     </div>

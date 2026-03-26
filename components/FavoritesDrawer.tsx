@@ -1,14 +1,25 @@
 "use client"
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from './ui/drawer'
-import { Button } from './ui/button'
+import { useFavoriteList, usePokemon } from '@/context/context'
+
 
 const FavoritesDrawer = () => {
+
+    const {favoritePokemonList} = useFavoriteList();
+    const {setPokemon} = usePokemon();
+
+    const handleSearchForFavorite = (name: string) => {
+        setPokemon(name)
+    }
+    useEffect(() => {
+        console.log("Drawer component is rendering!")
+    } ,[])
+
     return (
         <div className=''>
             <Drawer direction='left'>
                 <DrawerTrigger>
-                    {/* <img className='h-[60px] cursor-pointer mx-5 sm:mx-10  ' src="/assets/menu-icon.svg" alt="Toggle Favorites menu" /> */}
                     <svg className='cursor-pointer mx-5 sm:mx-10' width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 12H21" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M3 6H21" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -28,16 +39,13 @@ const FavoritesDrawer = () => {
 
                         </DrawerClose>
                     </DrawerHeader>
-                    <div className='overflow-y-auto '>
+                    <div className='overflow-y-auto'>
 
-                        <DrawerDescription className='text-white text-2xl ps-5 py-1.5'>Pokemon</DrawerDescription>
-                        <h1 className='text-white text-2xl ps-5 py-1.5'>Eevee</h1>
-                        <h1 className='text-white text-2xl ps-5 py-1.5'>Pokemon</h1>
+                        <DrawerDescription className='text-white text-2xl ps-5'></DrawerDescription>
+                        {favoritePokemonList.map((name , idx) => (
+                            <DrawerDescription key={idx} onClick={() => handleSearchForFavorite(name)} className='text-white text-2xl px-2 ps-5'>{name}</DrawerDescription>
+                        ))}
 
-                        <h1 className='text-white text-2xl ps-5 py-1.5'>Pokemon</h1>
-
-                        <h1 className='text-white text-2xl ps-5 py-1.5'>Pokemon</h1>
-                        <h1 className='text-white text-2xl ps-5 py-1.5'>Pokemon</h1>
                     </div>
                     <DrawerFooter>
 
