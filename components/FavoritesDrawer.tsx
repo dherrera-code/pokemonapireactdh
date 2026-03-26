@@ -43,7 +43,7 @@ const FavoritesDrawer = () => {
 
                         <DrawerDescription className='text-white text-2xl ps-5'></DrawerDescription>
                         {favoritePokemonList.map((name , idx) => (
-                            <DrawerDescription key={idx} onClick={() => handleSearchForFavorite(name)} className='text-white text-2xl px-2 ps-5'>{name}</DrawerDescription>
+                            <DrawerDescription key={idx} onClick={() => handleSearchForFavorite(name)} className='text-white text-2xl px-2 ps-5 cursor-pointer'>{name}</DrawerDescription>
                         ))}
 
                     </div>
