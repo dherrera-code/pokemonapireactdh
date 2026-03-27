@@ -32,13 +32,13 @@ const DisplayMainPokemon = () => {
 
     const getPokemonDetail = async (name: Pokemon) => {
         const data = await getPokemon(name);
-        console.log(data);
+
         setCurrentPokemon(data.name);
         setPokemon(data.name);
         setPokemonImage(data.sprites.other["official-artwork"].front_default);
         setPokemonShiny(data.sprites.other["official-artwork"].front_shiny)
         setPokemonCry(data.cries.latest);
-        console.log(data.types.length);
+
 
         (data.types.length > 1) ? setIsHaveSecondType(true) : setIsHaveSecondType(false);
 
@@ -53,13 +53,12 @@ const DisplayMainPokemon = () => {
     }  
     
     const handleCry = () => {
-        // console.log(audioRef.current)
-        console.log(favoritePokemonList)
+
         audioRef.current?.play()
     }
     const checkIsFav = async (pokemonCurrent: string) => {
         const favoriteList = await getFromLocalStorage();
-        console.log(favoriteList);
+
         for(let i = 0; i < favoriteList.length; i++){
             if(pokemonCurrent === favoriteList[i]){
                 setIsCurrentFavorite(true);
@@ -70,7 +69,6 @@ const DisplayMainPokemon = () => {
     }
 
     const handleFavoriteToggle = async () => {
-        console.log("HandleFav function is envoked!")
         const favoriteList = await getFromLocalStorage();
 
         for(let i = 0; i < favoriteList.length; i++){

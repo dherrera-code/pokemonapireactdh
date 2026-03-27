@@ -12,9 +12,6 @@ const FavoritesDrawer = () => {
     const handleSearchForFavorite = (name: string) => {
         setPokemon(name)
     }
-    useEffect(() => {
-        console.log("Drawer component is rendering!")
-    } ,[favoritePokemonList])
 
     return (
         <div className=''>

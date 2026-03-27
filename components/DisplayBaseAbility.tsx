@@ -27,8 +27,6 @@ const DisplayBaseAbility = () => {
 
   const displayBaseAbilityStat = async () => {
     const data = await getPokemon(pokemon);
-    console.log(pokemon);
-    console.log(data);
     setBaseData({
       hp : data.stats[0].base_stat,
       attack : data.stats[1].base_stat,

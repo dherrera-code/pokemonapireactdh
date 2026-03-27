@@ -12,7 +12,6 @@ const DisplayMovesLocation = () => {
 
   const displayMovesAndLocation = async () => {
     const data = await getPokemon(pokemon)
-    console.log(data)
 
     let movesString = data.moves[0].move.name;
     for (let i = 1; i < data.moves.length; i++) {

@@ -21,9 +21,7 @@ const DisplayEvolutions = () => {
     const displayEvolutionLine = async () => {
 
         const evolUrl = await getPokeEvolURL(pokemon)
-        console.log(evolUrl)
         const evolData = await getPokeDataByUrl(evolUrl);
-        console.log(evolData)
         const firstEvolData = await getPokemon(evolData.chain.species.name);
 
         setFirstEvolList({
@@ -45,7 +43,7 @@ const DisplayEvolutions = () => {
             };
             evolutionArr.push(pkmon) //insert pokemon object here       
         }
-        console.log(evolutionArr)
+
         setSecondEvolList(evolutionArr);
         // If there are no evolutions beyond this point, this method will flag our evolutions false then return.
         if(evolData.chain.evolves_to.length === 0){

@@ -19,7 +19,6 @@ const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
 const handleSubmit = async () => {
   try{
     const newData = await getPokemon(pokemonInput)
-    console.log(newData);
     setPokemon(pokemonInput)
     setPokemonInput("")
   }
